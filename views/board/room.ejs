@@ -1,0 +1,84 @@
+<div class="container-fluid text-center pt-3 pb-2 font-weight-bold text-white mt-3"
+    style="font-family:MaplestoryOTFBold;background-color:#7A7C99;">
+    <h5>모둠<%= group %> 활동
+        <span id="activityNumber"><%= activityNumber %></span>
+        <span id="activityName"><%= activityName %></span>
+        &nbsp;&nbsp;남은 시간:
+        <span id="activityTimer"></span>
+    </h5>
+</div>
+
+<div id="ai-search" class="text-center text-white pt-3 font-weight-bold" style="display:none;background-color:#5A5C79;">
+    <div class="form-group row row justify-content-center">
+        &nbsp; &nbsp; &nbsp;
+        <span>
+            <a class="btn btn-success text-white font-weight-bold" href="javascript:view('ai-search');"> 숨기기
+            </a>
+        </span>
+        &nbsp;
+        <input type="text" id="question" class="form-control form-control-user col-sm-6" name="question"
+            placeholder="위키백과 Q&A - AI 자연어 검색"> &nbsp;
+        <button id="answer-btn" class="btn btn-success text-white font-weight-bold">검색</button>
+    </div>
+    <div class="form-group row ml-2 mt-0 row justify-content-center">
+        &nbsp;
+        <div id="answer" class="text-white col-sm-6 pb-3">AI가 검색한 결과를 표시합니다.</div>
+    </div>
+</div>
+
+<div class="text-center row justify-content-center">
+    <table class="bg-dark text-white border border-dark mt-3 ml-3 mb-3">
+        <tr>
+            <td>
+                <button id="help-button" class="btn btn-dark font-weight-bold" style="font-size: 0.7rem;color:rgb(240,240,240)" onclick="showModal(helpModal)">도움말</button>
+            </td> 
+            <td>
+                &ensp;&ensp;
+                <span> 선 두께 </span>
+                <span class=" info bg-whtie text-white">&ensp;5&ensp;</span><input type="range" value="5" min="0"
+                    max="30" id="line-width" style="width:150px"><span class="info">&ensp;150&ensp;</span>
+                <span>&ensp;&ensp;&ensp; 색 선택</span>
+                <input class="btn border border-white bg-white text-white m-2" type="color" value="#005E7A"
+                    id="line-color" style="width:40px;height:20px">
+                &ensp;&ensp;&ensp;
+                <span></span>
+                <button id="btnZoomIn" class="btn btn-dark p-1" data-toggle="tooltip" title="그림판 크게 확대하기"><i
+                        class="fas fa-search-plus"></i></button>
+                <button id="btnZoomOut" class="btn btn-dark p-1" data-toggle="tooltip" title="그림판 작게 축소하기"><i
+                        class="fas fa-search-minus"></i></button>
+                <button id="btnResetZoom" class="btn btn-dark p-1" data-toggle="tooltip" title="그림판 원래 크기"><i
+                        class="fas fa-search"></i></button>
+            </td>
+        </tr>
+        <tr>
+            <td class="align-top">
+                <a class="btn btn-warning text-dark font-weight-bold" href="javascript:view('ai-search');"
+                    data-toggle="tooltip" title="AI 기반 자연어 지식 검색"> AI </a>
+                <br><button id="btnUndo" class="btn btn-dark" data-toggle="tooltip" title="되돌리기"><i
+                        class="fas fa-undo"></i></button>
+                <br><button id="btnRedo" class="btn btn-dark" data-toggle="tooltip" title="다시하기"><i
+                        class="fas fa-redo"></i></button>
+                <br><button id="pencil" class="btn btn-dark" data-toggle="tooltip" title="펜 그리기"><i
+                        class="fas fa-pencil-alt"></i></button>
+                <br><button id="text" class="btn btn-dark" data-toggle="tooltip" title="텍스트 상자"><i
+                        class="fas fa-font"></i></button>
+                <br><button id="select" class="btn btn-dark" data-toggle="tooltip" title="선택하기"><i
+                        class="far fa-object-ungroup"></i></button>
+                <br><button id="remove" class="btn btn-dark" data-toggle="tooltip" title="선택 개체 지우기"><i
+                        class="fas fa-eraser"></i></button>
+                <br><button id="clear" class="btn btn-dark" data-toggle="tooltip" title="전체 지우기"><i
+                        class="fas fa-trash-alt"></i></button>
+
+            </td>
+            <td style="background-color: #ffffff">
+                <span style="background-color: #ffffff">
+                    <canvas id="c" class="border border-dark" width="" height=""></canvas>
+                </span>
+            </td>
+        </tr>
+    </table>
+    <div id="detail-image">
+    </div>
+
+</div>
+<a href="../../../../" id="returnToHome" style="display:none"></a>

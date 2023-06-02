@@ -1,0 +1,47 @@
+<div class="container-fluid">
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h4 class="m-0 font-weight-bold text-primary">과제목록 </h4>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>시작</th>
+                            <th>접속코드</th>
+                            <th>학년</th>
+                            <th>반</th>
+                            <th>과목</th>
+                            <th>단원</th>
+                            <th>소단원</th>
+                            <th>세부활동1</th>
+                            <th>세부활동2</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                    </tfoot>
+                    <tbody>
+                        <% tasks.forEach(task => { %>
+                        <tr>
+                            <td> <a href="/board/<%= task.accessCode %>" class="play" ><i
+                                class="far fa-play-circle" data-toggle="tooltip" title="활동시작"></i></a></td>
+                            <td><%= task.accessCode %> </td>
+                            <td><%= task.activeGrade %></td>
+                            <td><%= task.activeClassroom %></td>
+                            <td><%= task.subject %></td>
+                            <td><%= task.lesson %></td>
+                            <td><%= task.sublesson %></td>
+                            <td><%= task.activity.a1 %></td>
+                            <td><%= task.activity.a2 %></td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.container-fluid -->

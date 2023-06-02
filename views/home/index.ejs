@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('../common/header.ejs') %>
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <%- include('../common/sidebar.ejs') %>
+            <%- include('./main-content.ejs') %>
+
+            <!-- Footer -->
+            <%- include('../common/footer.ejs') %>
+            <!-- End of Footer -->
+        </div>
+        <!-- End of Content Wrapper -->
+
+        <%- include('../common/logout-modal.ejs') %>
+        <%- include('../common/scroll-to-top.ejs') %>
+
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Import js scripts -->
+    <%- include('../common/import-js.ejs') %>
+
+</body>
+
+</html>

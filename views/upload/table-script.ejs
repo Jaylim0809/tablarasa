@@ -1,0 +1,39 @@
+<script>
+    $(document).ready(function () {
+        // Activate tooltip
+        $('[data-toggle="tooltip"]').tooltip();
+
+        // Select/Deselect checkboxes
+        var checkbox = $('table tbody input[type="checkbox"]');
+        $("#selectAll").click(function () {
+            if (this.checked) {
+                checkbox.each(function () {
+                    this.checked = true;
+                });
+            } else {
+                checkbox.each(function () {
+                    this.checked = false;
+                });
+            }
+        });
+        checkbox.click(function () {
+            if (!this.checked) {
+                $("#selectAll").prop("checked", false);
+            }
+        });
+    });
+
+    gebi("inputGroupFile01").addEventListener('change', function (e) {
+        var fileName = gebi("inputGroupFile01").files[0].name;
+        console.log(fileName)
+        var nextSibling = e.target.nextElementSibling
+        nextSibling.innerText = fileName
+    })
+
+    gebi("inputGroupFile02").addEventListener('change', function (e) {
+        var fileName = gebi("inputGroupFile02").files[0].name;
+        console.log(fileName)
+        var nextSibling = e.target.nextElementSibling
+        nextSibling.innerText = fileName
+    })
+</script>

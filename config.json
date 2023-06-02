@@ -1,0 +1,10 @@
+{
+    "development": {
+        "MONGODB": "mongodb+srv://admin:tabularasa12@cluster0.2gtzs.gcp.mongodb.net/test?retryWrites=true&w=majority",
+        "sessionSecret": "@#@$MYSIGN#@$#$",
+        "PORT": "8003"
+    },
+    "testing": {},
+    "staging": {},
+    "production": {}
+}

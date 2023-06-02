@@ -1,0 +1,87 @@
+<!-- ADD Modal HTML -->
+
+<div id="addTaskModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/upload/save" method="POST" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h4 class="modal-title col-11 text-center">신규 과제 등록</h4>
+                    <button type="button" class="col-1 close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <div class="col-12 text-center">
+                            <h6 class="p-2 mg-1 text-white bg-primary" id="add-access-code-display"></h6>
+                            <input type="hidden" name="accessCode" id="add-access-code" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-5">
+                            <select name="grade" id="add-grade" class="form-control" required>
+                                <option value="" selected disabled>학년(필수)</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                        <div class="col-7">
+                            <input type="text" name="subject" id="add-subject" class="form-control"
+                                placeholder="과목(필수)">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <input type="text" name="lesson" id="add-lesson" class="form-control" placeholder="단원(필수)"
+                                required>
+                        </div>
+                        <div class="col-8">
+                            <input type="text" name="sublesson" id="add-sublesson" class="form-control"
+                                placeholder="소단원(필수)" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="activity1" id="add-activity1" class="form-control" placeholder="세부활동1(필수)"
+                            required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="activity2" id="add-activity2" class="form-control"
+                            placeholder="세부활동2"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="activity3" id="add-activity3" class="form-control"
+                            placeholder="세부활동3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="activity4" id="add-activity4" class="form-control"
+                            placeholder="세부활동4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="activity5" id="add-activity5" class="form-control"
+                            placeholder="세부활동5"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="activity6" id="add-activity6" class="form-control"
+                            placeholder="세부활동6"></textarea>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupFileAddon01">이미지 등록</span>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                aria-describedby="inputGroupFileAddon01" name="file" accept="image/*">
+                            <label class="custom-file-label" for="inputGroupFile01" id="add-input-file-label">10mb
+                                이하</label>
+                        </div>
+                    </div>
+                </div>
+                <div class=" modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="취소">
+                    <input type="submit" class="btn btn-success" value="등록">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

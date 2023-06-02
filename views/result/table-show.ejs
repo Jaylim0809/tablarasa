@@ -1,0 +1,62 @@
+<div class="container-fluid">
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h4 class="m-0 font-weight-bold text-primary">활동 내역
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>    
+                                <span class="custom-checkbox">
+                                    <input type="checkbox" id="selectAll">
+                                    <label for="selectAll"></label>
+                                </span>
+                            </th>
+                            <th>등록일시</th>
+                            <th>학년</th>
+                            <th>반</th>
+                            <th>번호</th>
+                            <th>이름</th>
+                            <th>접속번호</th>
+                            <th>세부활동</th>
+                            <th>보기</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                    </tfoot>
+                    <tbody>
+                        <% let i = 1 %>
+                        <% boards.forEach(board => { %>
+                        <tr>
+                            <td>
+                                <span class="custom-checkbox">
+                                    <input type="checkbox" id="checkbox1" name="options[]" value="1">
+                                    <label for="checkbox1"></label>
+                                </span>
+                            </td>
+                            <td id="pk<%=i%>" pk="<%= board._id %>"><%= board.datetime.toLocaleDateString()%> <%= board.datetime.toLocaleTimeString()%></td>
+                            <td><%= board.grade %></td>
+                            <td><%= board.classroom %></td>
+                            <td><%= board.number %></td>
+                            <td><%= board.username %></td>
+                            <td><%= board.accessCode %></td>
+                            <td><%= board.activity %></td>
+                            <td>
+                                <a href="#detailBoardModal" class="detail" data-toggle="modal"><i
+                                        class="fas fa-search-plus" data-toggle="tooltip" title="Detail"
+                                        onclick="detailBoard('pk<%=i++%>')"></i></a>
+                            </td>
+                        </tr>
+                        <% }) %>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.container-fluid -->

@@ -1,0 +1,50 @@
+    <!-- Begin Page Content -->
+    <script src="/js/fabric/fabric.min.js"></script>
+    <script>
+        let boardData
+
+        const gebi = function (id) {
+            return document.getElementById(id)
+        }
+
+        const canvas = this.__canvas = new fabric.Canvas('c', {
+            isDrawingMode: false
+        })
+
+        const findBoard = async (pk) => {
+
+            boardData = await axios.post('/result/find', {
+                _id: gebi(pk).getAttribute('pk')
+            })
+
+            boardData = boardData.data
+
+            renderCanvas()
+        }
+
+        function renderCanvas() {
+
+            let ratio = canvas.width / boardData.board.w;
+
+            //reposition and rescale each sent canvas object
+            boardData.board.data.objects.forEach(object => {
+                object.left *= ratio;
+                object.scaleX *= ratio;
+                object.top *= ratio;
+                object.scaleY *= ratio;
+            });
+
+            canvas.loadFromJSON(boardData.board.data);
+
+            canvas.interactive = false;
+            canvas.selection = false;
+
+            console.log('캔버스에 표시할 데이터',boardData.board.data)
+        }
+
+        const detailBoard = async (pk) => {
+
+            await findBoard(pk)
+
+        }
+    </script>

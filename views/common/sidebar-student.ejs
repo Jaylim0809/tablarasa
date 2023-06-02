@@ -1,0 +1,51 @@
+<!-- topbar -->
+<nav class="navbar navbar-expand-sm navbar-dark bg-gradient-primary mb-4 static-top shawdow"
+    style="font-family:MaplestoryOTFBold">
+
+    <!-- topbar - Brand -->
+    <a class="navbar-brand text-white" href="./">
+        <!--rotate-n-15 -->
+        <img src="img/logo-xsm-nt.png" height="40">
+        &nbsp; 온라인 협동학습 타불라 라사
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="/board">
+                    <div> 활동시작</div>
+                </a>
+            </li>
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="/result">
+                    <div> 활동내역</div></a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="/logout">
+                    <div> 로그아웃</div></a>
+            </li>
+
+            <li class="nav-item dropdown no-arrow">
+                <a class="nav-link text-white bold" href="#">
+                    <div><%= currentUser.username %>님</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-- End of topbar -->

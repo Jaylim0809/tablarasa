@@ -1,0 +1,52 @@
+<div class="container">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+        <div class="col-xl-10 col-lg-12 col-md-9">
+
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row" style="font-family:MaplestoryOTFBold">
+                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <!-- <h1 class="h4 text-gray-900 mb-4">로그인해주세요.</h1> -->
+                                    <div style="font-size:x-large;color:black" class="mt-2">
+                                        <img src="img/logo-xsm-nt.png" height="40" weight="40">
+                                        &nbsp;온라인 협동학습 <span style="color:purple">타불라 라사</span>
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                                <form class="user" action="/login" method="post">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control form-control-user" name="email"
+                                            aria-describedby="emailHelp" placeholder="아이디(이메일)">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control form-control-user" name="password"
+                                            placeholder="비밀번호">
+                                    </div>
+                                    <div class="text-center">
+                                        <h6 style="color:red; display:inline"> <%= infos %> </h6> <br>
+                                    </div>
+                                    <input type="submit" value="로그인" class="btn btn-primary btn-user btn-block">
+                                </form>
+                                <hr>
+                                <div class="text-center">
+                                    <a class="small" href="register">가입하기</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

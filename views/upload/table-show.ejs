@@ -1,0 +1,89 @@
+<div class="container-fluid">
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h4 class="m-0 font-weight-bold text-primary">과제목록 &emsp; <a href="#addTaskModal"
+                    class="btn-sm btn-danger" data-toggle="modal" onclick="
+                    createAccessCode()">
+                    <span>신규과제등록</span></a> &ensp;
+                <!-- <a href="#deleteTaskModal" class="btn-sm btn-secondary" data-toggle="modal">
+                    <span >선택과제삭제</span></a> </h4> -->
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>
+                                <span class="custom-checkbox">
+                                    <input type="checkbox" id="selectAll">
+                                    <label for="selectAll"></label>
+                                </span>
+                            </th>
+                            <th>등록일시</th>
+                            <th>학년</th>
+                            <th>과목</th>
+                            <th>단원</th>
+                            <th>소단원</th>
+                            <th>세부활동</th>
+                            <th>활성화</th>
+                            <th>더보기</th>
+                            <th>편집</th>
+                            <th>삭제</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                    </tfoot>
+                    <tbody>
+                        <% tasks.forEach(task => { %>
+                        <tr>
+                            <td>
+                                <span class="custom-checkbox">
+                                    <input type="checkbox" id="checkbox1" name="options[]" value="1">
+                                    <label for="checkbox1"></label>
+                                </span>
+                            </td>
+                            <td><%= task.datetime.toLocaleDateString()%> <%= task.datetime.toLocaleTimeString() %> </td>
+                            <td><%= task.grade %></td>
+                            <td><%= task.subject %></td>
+                            <td><%= task.lesson %></td>
+                            <td><%= task.sublesson %></td>
+                            <td><%= task.activity.a1 %></td>
+                            <td>
+                                <% var taskCheck = task.activeGrade %>
+                                <%if (!task.activeGrade) { %>
+                                <a href="#activeTaskModal" class="active" data-toggle="modal"><i
+                                        class="fas fa-toggle-off" data-toggle="tooltip" title="Active"
+                                        onclick="activeAccessCode(<%= task.accessCode %>)"></i></a>
+                                <% } else { %>
+                                <a href="#activeTaskModal" class="active" data-toggle="modal"><i
+                                        class="fas fa-toggle-on" data-toggle="tooltip" title="Active"
+                                        onclick="activeAccessCode(<%= task.accessCode %>)"></i></a>
+                                <% } %>
+                            </td>
+                            <td>
+                                <a href="#detailTaskModal" class="detail" data-toggle="modal"><i
+                                        class="fas fa-search-plus" data-toggle="tooltip" title="Detail"
+                                        onclick="detailAccessCode(<%= task.accessCode %>)"></i></a>
+                            </td>
+                            <td>
+                                <a href="#editTaskModal" class="edit" data-toggle="modal"><i class="fas fa-edit"
+                                        data-toggle="tooltip" title="Edit"
+                                        onclick="editAccessCode(<%= task.accessCode %>)"></i></a>
+                            </td>
+                            <td>
+                                <a href="#deleteTaskModal" class="delete" data-toggle="modal"><i
+                                        class="far fa-trash-alt" data-toggle="tooltip" title="Delete"
+                                        onclick="deleteModal(<%= task.accessCode %>)"></i></a>
+                            </td>
+                        </tr>
+                        <% }) %>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.container-fluid -->

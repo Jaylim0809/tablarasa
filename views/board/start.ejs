@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+        let accessCode = `<%= task.accessCode %>`
+        let groupCount = `<%= task.activeGroup %>`
+        let userEmail = `<%= userEmail %>`
+        let userName = `<%= userName %>`
+        let activityDetail = `<%= activity %>`
+        let activityCount = `<%= activity.length %>`
+    </script>
+
+    <%- include('./../common/headers-path2.ejs') %>
+    <!-- <%- include('./partials/board-header.ejs') %> -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/fabric/fabric.min.js"></script>
+    <script type="module" src="/js/fabric/script.js" defer></script>
+
+    <title>모둠/활동선택</title>
+</head >
+
+<body>
+    <form id="student-form" action="/board/<%=task.accessCode%>/run" method="POST">
+
+    <header class="p-3 bg-primary text-white text-center" style="font-family:MaplestoryOTFBold">
+        <h4><img src="./../../img/logo-xsm-nt.png" height="40">
+            &nbsp; 모둠과 세부활동을 선택해주세요.
+            &nbsp; &nbsp; &nbsp; &nbsp;
+            <span>
+                <input type="submit" class="btn btn-success" value="혼자하기">
+            </span>
+        </h4>
+    </header>
+    <br>
+
+    <table>
+        <fieldset>
+            <% for (let i = 1; i <= task.activeGroup; i++) { %>
+            <tr>
+                <td>
+                    <div><input type="radio" name="group" id="select-group-<%= i %>" value="<%= i %>">
+                        &nbsp;모둠
+                        <%= i%> </div>
+                </td>
+                <td id="select-group-name-<%= i %>">
+
+                </td>
+            </tr>
+            <% } %>
+        </fieldset>
+
+        <tr>
+            <td>
+                <h4>
+                    <hr>
+                </h4>
+            </td>
+        </tr>
+
+        <fieldset>
+            <% let j = 1 %>
+            <% activity.forEach(a => { %>
+            <% console.log("activity 배열 안에 들어있는 내용",j,a) %>
+            <tr>
+                <td>
+                    <div><input type="radio" name="activity" id="select-activity-<%= j %>" value="<%= j %>">
+                        &nbsp;세부활동 <%= j %> &nbsp; - &nbsp;
+                        <span name="activityName" activityNo="<%= a %>"> <%= a %> </span>
+                    </div>
+                </td>
+                <td id="select-activity-name-<%= j++ %>">
+
+                </td>
+            </tr>
+            <% }) %>
+        </fieldset>
+    </table>
+    <br>
+    <!-- <input type="submit" id="student-start-button" class="btn btn-secondary" value="모둠 활동 시작" hidden> -->
+    </form>
+    <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright &copy; Tabula Rasa 2020</span>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

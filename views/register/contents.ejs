@@ -1,0 +1,70 @@
+<div class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row" style="font-family:MaplestoryOTFBold">
+                <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                <div class="col-lg-7">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">회원가입</h1>
+                        </div>
+                        <form class="user" action="/register" method="post">
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control" name="username"
+                                        placeholder="이름" required>
+                                </div>
+                                <div class="col-sm-6">
+                                    <select name="role" class="form-control" required>
+                                        <option value="" disabled selected>학생/교사 중 선택</option>
+                                        <option value="3">학생</option> 
+                                        <option value="2">교사</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="email"
+                                    placeholder="이메일 주소(아이디)" required>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="password" class="form-control" name="password"
+                                        placeholder="비밀번호" required>
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="password" class="form-control" name="repeatpassword"
+                                        placeholder="비밀번호 재입력" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-4 mb-3 mb-sm-0">
+                                    <input type="number" class="form-control" name="grade"
+                                        placeholder="학년" required>
+                                </div>
+                                <div class="col-sm-4 mb-3 mb-sm-0">
+                                    <input type="number" class="form-control" name="classroom"
+                                        placeholder="반" required>
+                                </div>
+                                <div class="col-sm-4 mb-3 mb-sm-0">
+                                    <input type="number" class="form-control" name="number"
+                                        placeholder="번호" required>
+                                </div>
+                            </div>
+                            <input type="submit" value="회원가입" class="btn btn-primary btn-block" />
+                        </form>
+                        <hr>
+                        <div class="text-center">
+                            <h6 style="color:red; display:inline"> <%= infos %> </h6> <br>
+                        </div>
+                        <div class="text-center">
+                            <a class="small" href="/login">로그인하기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

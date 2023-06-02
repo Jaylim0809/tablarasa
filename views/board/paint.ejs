@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+        let accessCode = `<%= task.accessCode %>`
+        let group = `<%= group %>`
+        let path = `<%= path %>`
+        let activityNumber = `<%= activityNumber %>`
+        let activityCount = `<%= activity.length %>`
+        let activityName = `<%= activityName %>`
+        let userEmail = `<%= userEmail %>`
+        let userName = `<%= userName %>`
+    </script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Bootstrap JavaScript-->
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- axios JavaScript-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!-- Custom fonts for this template-->
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="#" />
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.3.2/fabric.min.js"></script>
+    <script src="/js/fabric/fabric-history.js"></script>
+    <script defer type="module" src="/js/fabric/script.js"></script>
+    <script>
+        function view(str) {
+            let obj = document.getElementById(str);
+
+            if (obj.style.display == "") {
+                obj.style.display = "none";
+            } else {
+                obj.style.display = ""
+            }
+        }
+
+        function showModal(modal) {
+            $("#helpModal").modal("show")
+        }
+    </script>
+
+    <title>모둠활동</title>
+</head>
+
+<body id="page-top">
+    
+    <!-- Page Wrapper -->
+    <div id="wrassspper">
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div>
+                <%- include('./../board/room.ejs') %>
+            </div>
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Tabula Rasa 2020</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    
+    <%- include('./../board/room-modal.ejs') %>
+</body>
+
+</html>

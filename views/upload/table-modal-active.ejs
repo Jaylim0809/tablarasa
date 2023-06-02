@@ -1,0 +1,51 @@
+<!-- ACTIVE Modal HTML -->
+
+<div id="activeTaskModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/upload/active" method="POST" id="active-form">
+                <div class="modal-header">
+                    <h4 class="modal-title col-11 text-center">과제 활성화</h4>
+                    <button type="button" class="col-1 close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <div class="col-12 text-center">
+                            <h6 class="p-2 mg-1 text-white bg-primary" id="active-access-code-display"></h6>
+                            <input type="hidden" name="accessCode" id="active-access-code" class="form-control"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <select name="activeGrade" id="active-grade" class="form-control">
+                                <option value="" selected disabled>학년(필수)</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+
+                        <div class="col-4">
+                            <input type="text" name="activeClassroom" id="active-classroom" class="form-control"
+                                placeholder="반(필수)">
+                        </div>
+
+                        <div class="col-4">
+                            <input type="text" name="activeGroup" id="active-group" class="form-control"
+                                placeholder="모둠 수(필수)">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <input type="button" class="btn-sm btn-success" data-dismiss="modal" value="취소">
+                    <input type="submit" class="btn-sm btn-secondary" value="활성화">
+                    <input type="button" class="btn-sm btn-secondary" value="비활성화" onclick="inactiveButton()">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

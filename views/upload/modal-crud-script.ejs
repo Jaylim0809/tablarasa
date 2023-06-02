@@ -1,0 +1,104 @@
+    <!-- Begin Page Content -->
+    <script>
+        const fileSizeLimit = "10mb 이하만 등록 가능"
+
+        const gebi = function (id) {
+            return document.getElementById(id)
+        }
+        let accessCode
+        let taskData
+
+        const createAccessCode = async () => {
+            try {
+                gebi("add-input-file-label").innerText = fileSizeLimit
+                accessCode = await axios.get('/upload/random')
+                console.log(accessCode)
+                accessCode = accessCode.data
+                console.log(accessCode)
+                const accessInput = gebi("add-access-code")
+                accessInput.value = accessCode
+                const accessDisplay = gebi("add-access-code-display")
+                accessDisplay.innerText = "과제 접속 코드 : " + accessCode
+                console.log("신규 과제 등록 스크립트 끝")
+            } catch (e) {
+                console.error(e)
+            }
+        }
+
+        const findTaskWithAccessCode = async (accessCode) => {
+            taskData = await axios.post('/upload/find', {
+                accessCode: accessCode
+            })
+        }
+
+        const activeAccessCode = async (accessCode) => {
+            await findTaskWithAccessCode(accessCode)
+            taskData = taskData.data
+            gebi("active-access-code-display").innerText = accessCode
+            gebi("active-access-code").value = accessCode
+            gebi("active-grade").options[taskData.activeGrade].selected = true
+            gebi("active-classroom").value = taskData.activeClassroom
+            gebi("active-group").value = taskData.activeGroup
+        }
+
+        const inactiveButton = () => {
+            gebi('active-grade').selectedIndex = -1
+            gebi('active-classroom').value = null
+            gebi('active-group').value = null
+            gebi('active-form').submit()
+        }
+
+        const editAccessCode = async (accessCode) => {
+            gebi("edit-input-file-label").innerText = fileSizeLimit
+            await findTaskWithAccessCode(accessCode)
+            taskData = taskData.data
+            gebi("edit-access-code-display").innerText = taskData.accessCode
+            gebi("edit-access-code").value = taskData.accessCode
+            gebi("edit-grade").options[taskData.grade].selected = true
+            gebi("edit-subject").value = taskData.subject
+            gebi("edit-lesson").value = taskData.lesson
+            gebi("edit-sublesson").value = taskData.sublesson
+            gebi("edit-activity1").value = taskData.activity.a1
+            gebi("edit-activity2").value = taskData.activity.a2
+            gebi("edit-activity3").value = taskData.activity.a3
+            gebi("edit-activity4").value = taskData.activity.a4
+            gebi("edit-activity5").value = taskData.activity.a5
+            gebi("edit-activity6").value = taskData.activity.a6
+            if (taskData.path) {
+                console.log(taskData.path)
+                gebi("edit-image").innerHTML =
+                    `<img id="edit-image"src="uploads/${taskData.path.split('/',3)[2]}" width="90%"> <br><br>`
+            }
+        }
+
+        const detailAccessCode = async (accessCode) => {
+            await findTaskWithAccessCode(accessCode)
+            taskData = taskData.data
+            gebi("detail-access-code-display").innerText = taskData.accessCode
+            gebi("detail-access-code").value = taskData.accessCode
+            gebi("detail-grade").value = taskData.grade
+            gebi("detail-subject").value = taskData.subject
+            gebi("detail-lesson").value = taskData.lesson
+            gebi("detail-sublesson").value = taskData.sublesson
+            gebi("detail-activity1").value = taskData.activity.a1
+            gebi("detail-activity2").value = taskData.activity.a2
+            gebi("detail-activity3").value = taskData.activity.a3
+            gebi("detail-activity4").value = taskData.activity.a4
+            gebi("detail-activity5").value = taskData.activity.a5
+            gebi("detail-activity6").value = taskData.activity.a6
+            if (taskData.path) {
+                console.log(taskData.path)
+                gebi("detail-image").innerHTML =
+                    `<img id="detail-image"src="uploads/${taskData.path.split('/',3)[2]}" width="90%"> <br><br>`
+            } else {
+                gebi("detail-image").innerHTML = ""
+            }
+        }
+
+        const deleteModal = async (accessCode) => {
+            document.getElementById("submit-delete-input").value = accessCode
+            await axios.post('/upload/find', {
+                accessCode: accessCode
+            })
+        }
+    </script>

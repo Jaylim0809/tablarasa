@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('./../common/header.ejs') %>
+</head>
+
+<body id="page-top">
+    
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        
+        <div id="content-wrapper" class="d-flex flex-column">
+            <%- include('./../common/sidebar.ejs') %>
+            <div>
+                <%- include('./table-show.ejs') %>
+                <%- include('./table-modal-detail.ejs') %>
+            </div>
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Tabula Rasa 2020</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    
+    <!-- End of Page Wrapper -->
+    
+    <%- include('./../common/scroll-to-top.ejs') %>
+    <%- include('./../common/logout-modal.ejs') %>
+    
+    <%- include('./../common/import-js.ejs') %>
+    <%- include('./modal-crud-script.ejs') %>
+</body>
+
+</html>

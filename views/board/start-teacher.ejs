@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+        let accessCode = `<%= task.accessCode %>`
+        let groupCount = `<%= task.activeGroup %>`
+        let userEmail = `<%= userEmail %>`
+        let userName = `<%= userName %>`
+        let activityCount = `<%= activity.length %>`
+    </script>
+
+    <%- include('./../common/headers-path2.ejs') %>
+    <!-- <%- include('./partials/board-header.ejs') %> -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/fabric/fabric.min.js"></script>
+    <script defer type="module" src="/js/fabric/script.js"></script>
+
+    <title>모둠/활동 확인</title>
+</head>
+
+<body>
+    <div id="teacher-form">
+        <!-- task.accessCode, task.activeGroup, activity를 활용헤서 view 파일 -->
+        <div class="text-center p-3 bg-primary font-weight-bold text-light mt-2 mb-4">
+            <h1><span class="display-4"><%= task.accessCode %> <small>(현재 학생수: <span id="total-users"></span> )
+                </span></small></span> </h1>
+            <div>
+                <button class="btn-lg btn-warning text-dark" id="teacher-stop-button"> 초기화</button>
+                &emsp;
+                <select class="" id="canvas-size">
+                    <option value="1">VGA : 640X320</option>
+                    <option value="2" selected>SVGA : 800X400</option>
+                    <option value="3">XVGA : 1024X512</option>
+                    <option value="4">WXGA : 1280X640</option>
+                </select>
+                &emsp;
+                <select class="" id="activity-time">
+                    <option value="1">1분</option>
+                    <option value="2">2분</option>
+                    <option value="3" selected>3분</option>
+                    <option value="4">4분</option>
+                    <option value="5">5분</option>
+                    <option value="6">6분</option>
+                    <option value="7">7분</option>
+                    <option value="8">8분</option>
+                    <option value="8">9분</option>
+                    <option value="8">10분</option>
+                </select>
+                &emsp;
+                <select class="" id="round-count">
+                    <option value="1">1순환</option>
+                    <option value="2">2순환</option>
+                    <option value="3">3순환</option>
+                    <option value="4" selected>4순환</option>
+                    <option value="5">5순환</option>
+                    <option value="6">6순환</option>
+                    <option value="7">7순환</option>
+                    <option value="8">8순환</option>
+                </select>
+                &emsp;
+                남은 시간:<span id="activityTimer"></span>
+                &emsp;
+                <button class="btn-lg btn-warning text-dark" id="teacher-start-button"> 활동시작</button>
+                <a href="../../" id="returnToHome" style="display:none"></a>
+            </div>
+        </div>
+
+        <div class="container">
+            <% let groupNumber = 1 %>
+            <% for(let i = 0; i < Math.ceil(task.activeGroup/2) ; i++) { %>
+            <div class="row">
+                <% for(let j = 0; j < 2; j++) { %>
+                <% if(groupNumber > task.activeGroup) break %>
+                <div class="col-sm-6 border rounded p-2 mb-2">
+                    <h3>모둠 <%= groupNumber%></h3>
+                    <table>
+                        <% let k = 1 %>
+                        <% activity.forEach(a => { %>
+                        <tr>
+                            <td><%=k%>. <%=a%> : </td>
+                            <td id="<%= groupNumber%>-<%= k++ %>"></td>
+                        </tr>
+                        <% }) %>
+                    </table>
+                </div>
+                <% groupNumber++ %>
+                <% } %>
+            </div>
+            <% } %>
+        </div>
+    </div>
+    <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright &copy; Tabula Rasa 2020</span>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
